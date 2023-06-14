@@ -13,6 +13,51 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::match( [ 'get', 'post' ], '/', function () {
+    echo 'Home page';
+} );
+
+Route::match( [ 'get', 'post' ], '/shop', function () {
+    echo 'Shop';
+} );
+
+Route::get( '/product/{product_slug}', function ( string $product_slug ) {
+    echo 'Single product ' . $product_slug;
+} );
+
+Route::match( [ 'get', 'post' ], '/shop/{category_name}', function ( $category_name ) {
+    echo 'Shop category name: ' . $category_name;
+} );
+
+Route::match( [ 'get', 'post' ], '/shop/tags/{tags_name}', function ( $tag_name ) {
+    echo 'Shop tag name: ' . $tag_name;
+} );
+
+Route::match( [ 'get', 'post' ], '/cart', function () {
+    echo 'Cart';
+} );
+
+Route::match( [ 'get', 'post' ], '/checkout', function () {
+    echo 'Checkout';
+} );
+
+Route::get( '/thanks-for-order', function () {
+    echo 'Thanks for your order';
+} );
+
+Route::match( [ 'get', 'post' ], '/account', function () {
+    echo 'Account';
+} );
+
+Route::match( [ 'get', 'post' ], '/account/wish-lust/{user_login}', function ( $user_login ) {
+    echo 'Account wish-list: ' . $user_login;
+} );
+
+Route::get( '/faq', function () {
+    echo 'FAQ page';
+} );
+
+Route::get( '/about', function () {
+    echo 'About page';
+} );
