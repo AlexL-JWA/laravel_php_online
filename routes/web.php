@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::match( [ 'get', 'post' ], '/', function () {
-    echo 'Home page';
-} );
+Route::match( [ 'get', 'post' ], '/', [ HomeController::class, 'index' ] )->name( 'home' );
+Route::match( [ 'get', 'post' ], '/store', [ HomeController::class, 'store' ] )->name( 'store' );
 
 Route::match( [ 'get', 'post' ], '/shop', function () {
     echo 'Shop';
