@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class HomeController extends Controller {
-
+class User extends Controller {
     public function __construct() {
     }
 
@@ -15,24 +14,11 @@ class HomeController extends Controller {
      *
      * @return View
      */
-    public function index() {
-//        $products = DB::table( 'users' )->where( 'name', '=', 'Gerda Stamm' )->get();
-//        $products = DB::table( 'users' )->where( 'name', '=', 'Gerda Stamm' )->first();
-//        $products = DB::table( 'users' )->where( 'name', '=', 'Gerda Stamm' )->value( 'email' );
-//        $products = DB::table( 'users' )->pluck( 'name' );
-//        $products = DB::table( 'users' )->max( 'id' );
-//        $products = DB::table( 'users' )->min( 'id' );
-//        $products = DB::table( 'users' )->select( 'name', 'id' )->get();
-//        $products = DB::table( 'users' )->select( 'name', 'id', 'email as e' )->get();
-//        $products = DB::table( 'users' )->select( 'name', 'id', 'email as e' )->get();
+    public function index(): View {
 
-        // типа пагинация
-//        $products = DB::table( 'users' )->orderBy( 'id' )->chunk( 2, function ( $chunk ) {
-//            dd( $chunk );
-//        } );
+        $message = 'TEST MESSAGE';
 
-//        dd( $products );
-        return view( 'welcome' );
+        return view( 'user.user', compact( 'message' ) );
     }
 
     /**
@@ -52,9 +38,7 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store( Request $request ) {
-        if ( $request->file( 'myFile' )->isValid() ) {
-            $request->file( 'myFile' )->store( 'images' );
-        }
+
     }
 
     /**
