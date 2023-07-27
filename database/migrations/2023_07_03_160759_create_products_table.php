@@ -14,12 +14,12 @@ class CreateProductsTable extends Migration {
         Schema::create( 'products', function ( Blueprint $table ) {
             $table->id();
             $table->unsignedBigInteger( 'product_author_id' )->nullable();
-            $table->string( 'product_name' );
-            $table->string( 'product_type', 50 )->comment( 'Simple | Composite | Virtual' );
-            $table->string( 'prodгсе_title', 150 );
+            $table->string( 'name' );
+            $table->string( 'type', 50 )->comment( 'Simple | Composite | Virtual' );
+            $table->string( 'title', 150 );
             $table->longText( 'description' )->nullable();
             $table->string( 'short_description', 255 )->nullable();
-            $table->string( 'product_status', 100 )->default( 'draft' )
+            $table->string( 'status', 100 )->default( 'draft' )
                 ->comment( 'Publish | Draft | Scheduled | Trashed' );
             $table->string( 'slug', 255 )->unique();
             $table->integer( 'qty' )->default( 0 );

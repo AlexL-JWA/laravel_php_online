@@ -13,11 +13,10 @@ class ProductFactory extends Factory {
     public function definition() {
         return [
             'title'       => $this->faker->realText( 15 ),
+            'name'        => $this->faker->realText( 20 ),
             'description' => $this->faker->realText,
             'price'       => $this->faker->numberBetween( 40, 6673 ),
             'slug'        => $this->faker->slug( 1 ),
         ];
     }
-
-    // http://joxi.ru/EA4L1xaH0n6WKA
 }

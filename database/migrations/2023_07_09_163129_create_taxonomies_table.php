@@ -4,29 +4,24 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductTermsTable extends Migration {
+class CreateTaxonomiesTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
     public function up() {
-        Schema::create( 'product_terms', function ( Blueprint $table ) {
+        Schema::create( 'taxonomies', function ( Blueprint $table ) {
             $table->id();
-            $table->unsignedBigInteger( 'products_id' );
             $table->unsignedBigInteger( 'term_id' );
+            $table->string( 'name', 150 )->unique();
+            $table->string( 'description', 255 )->nullable();
             $table->timestamps();
 
-            $table->foreign( 'products_id' )
-                ->references( 'id' )
-                ->on( 'products' )
-                ->onDelete( 'cascade' )
-                ->onUpdate( 'cascade' );
             $table->foreign( 'term_id' )
                 ->references( 'id' )
-                ->on( 'term' )
-                ->onDelete( 'cascade' )
-                ->onUpdate( 'cascade' );
+                ->on( 'terms' )
+                ->onDelete( 'cascade' );
         } );
     }
 
@@ -36,6 +31,6 @@ class CreateProductTermsTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists( 'product_terms' );
+        Schema::dropIfExists( 'taxonomies' );
     }
 }
